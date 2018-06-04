@@ -1,5 +1,8 @@
 import {Component} from '@angular/core';
 import {IMarker} from './models/marker.model';
+import {AngularFirestore} from 'angularfire2/firestore';
+import {Observable} from 'rxjs';
+import {AngularFireDatabase} from 'angularfire2/database';
 
 @Component({
     selector: 'app-root',
@@ -14,12 +17,21 @@ export class AppComponent {
     lng = -1.651217;
     public markers: IMarker[] = [];
 
-    public onMapClicked(event: any) {
-        this.markers = [];
-        this.markers.push({lat: event.coords.lat, lng: event.coords.lng, label: '♥'});
+    public items: Observable<any>;
+
+    constructor(db: AngularFireDatabase) {
+        this.items = db.list('items').valueChanges();
+        this.items.subscribe(data => {
+            console.log(data);
+        });
     }
 
-    public onMapRightClicked(event: any) {
+    public onMapClicked(event: any): void {
+        this.markers = [];
+        this.markers.push({lat: event.coords.lat, lng: event.coords.lng, label: ''});
+    }
+
+    public onMapRightClicked(event: any): void {
         alert('Modal de gestion pour le clic droit');
     }
 }
