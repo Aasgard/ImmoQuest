@@ -20,9 +20,11 @@ export class AppComponent {
     public items: Observable<any>;
 
     constructor(db: AngularFireDatabase) {
-        this.items = db.list('items').valueChanges();
+        this.items = db.list('markers').valueChanges();
         this.items.subscribe(data => {
-            console.log(data);
+          if (data && data.length > 0) {
+            this.markers = data;
+          }
         });
     }
 
