@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
+  zoom = 14;
+  lat = 48.118845;
+  lng = -1.651217;
 }
