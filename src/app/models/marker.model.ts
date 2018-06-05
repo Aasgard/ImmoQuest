@@ -6,4 +6,6 @@ export interface IMarker {
     isFavorite: boolean;
     houseId: string;
     type: string;
+    createdDatetime: Date;
+    updatedDatetime?: Date;
 }
