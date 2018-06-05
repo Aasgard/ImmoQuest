@@ -1,6 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
 import {IMarker} from './models/marker.model';
-import {Observable} from 'rxjs';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {AgmMap} from '@agm/core';
 import * as moment from 'moment';
@@ -20,25 +19,29 @@ export class AppComponent {
     lng = -1.651217;
     public markers: IMarker[] = [];
 
-    public items: Observable<IMarker[]>;
-
     constructor(private db: AngularFireDatabase) {
-        this.items = db.list<IMarker>('markers').valueChanges();
+        db.list('markers').snapshotChanges().subscribe((data: any) => {
+            this.markers = data.map(data => {
+                const record = Object.assign({}, data.payload.val());
+                record.id = data.payload.key;
+                return record;
+            });
+        });
     }
 
     public onMapClicked(event: any): void {
         // this.db.list('markers').push({lat: event.coords.lat, lng: event.coords.lng, label: ''});
         // this.markers.push({lat: event.coords.lat, lng: event.coords.lng, label: ''});
-        console.log(moment().format());
         this.db.list('markers').set(this.generateGuid(), {lat: event.coords.lat, lng: event.coords.lng, label: '', createdDatetime: moment().format()});
-    }
-
-    public onMapIdled(event): void {
-        console.log(this.mainMap);
     }
 
     public onMapRightClicked(event: any): void {
         alert('Modal de gestion pour le clic droit');
+    }
+
+    public onMarkerClicked(id: any): void {
+        console.log(id);
+        this.db.object(`markers/${id}`).remove();
     }
 
     // TODO : move that function away in an utils class
