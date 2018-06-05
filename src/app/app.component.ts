@@ -22,15 +22,16 @@ export class AppComponent {
     constructor(db: AngularFireDatabase) {
         this.items = db.list('markers').valueChanges();
         this.items.subscribe(data => {
-          if (data && data.length > 0) {
-            this.markers = data;
-          }
+            console.log(data);
+            if (data && data.length > 0) {
+                this.markers = data;
+            }
         });
     }
 
     public onMapClicked(event: any): void {
-        this.markers = [];
-        this.markers.push({lat: event.coords.lat, lng: event.coords.lng, label: ''});
+        // this.markers = [];
+        // this.markers.push({lat: event.coords.lat, lng: event.coords.lng, label: ''});
     }
 
     public onMapRightClicked(event: any): void {
