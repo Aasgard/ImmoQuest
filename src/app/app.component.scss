@@ -1,3 +1,15 @@
 agm-map {
-  height: 100vh;
+  height: 92.6vh;
+}
+
+mat-progress-bar {
+  height: 0.4vh;
+}
+
+mat-toolbar {
+  height: 7vh;
+}
+
+.example-fill-remaining-space {
+  flex: 1 1 auto;
 }

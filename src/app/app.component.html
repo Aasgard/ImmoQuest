@@ -1,13 +1,22 @@
+<mat-toolbar>
+	<span>ImmoQuest</span>
+  <span class="example-fill-remaining-space"></span>
+  <button mat-icon-button>
+    <mat-icon>person</mat-icon>
+  </button>
+</mat-toolbar>
+
+<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+
 <agm-map
-        [latitude]="lat"
-        [longitude]="lng"
-        [zoom]="zoom"
-        [disableDefaultUI]="false"
-        [zoomControl]="false"
-        [fullscreenControl]="true"
-        (mapClick)="onMapClicked($event)"
-        (mapRightClick)="onMapRightClicked($event)"
->
-    <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [label]="" (markerClick)="onMarkerClicked(marker.id)"></agm-marker>
+	[latitude]="lat"
+	[longitude]="lng"
+	[zoom]="zoom"
+	[disableDefaultUI]="false"
+	[zoomControl]="false"
+	[fullscreenControl]="true"
+	(mapClick)="onMapClicked($event)"
+	(mapRightClick)="onMapRightClicked($event)">
+	<agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [label]="" (markerClick)="onMarkerClicked(marker.id)"></agm-marker>
 </agm-map>
 <router-outlet></router-outlet>
