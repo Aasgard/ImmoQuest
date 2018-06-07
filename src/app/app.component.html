@@ -1,16 +1,23 @@
 <mat-toolbar [color]="'primary'" role="heading">
 	<span>ImmoQuest</span>
-  <span class="example-fill-remaining-space"></span>
+  <span class="fill-space-flex"></span>
+  <button mat-icon-button (click)="onAddInterestButtonClicked()">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>favorite</mat-icon>
+  </button>
   <button mat-icon-button>
     <mat-icon>person</mat-icon>
   </button>
 </mat-toolbar>
 
-<mat-progress-bar mode="indeterminate"></mat-progress-bar>
+<!--<mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 
 <agm-map
 	[latitude]="lat"
 	[longitude]="lng"
+  [styles]="mapStylerOptions"
 	[zoom]="zoom"
 	[disableDefaultUI]="false"
 	[zoomControl]="false"

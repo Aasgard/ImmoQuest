@@ -12,10 +12,17 @@ import {MatToolbarModule} from '@angular/material/toolbar';
 import {MatProgressBarModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
+import {MatDialogModule} from '@angular/material/dialog';
+import { TestComponent } from './components/shared/test/test.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TestComponent
+  ],
+  entryComponents: [
+    TestComponent
   ],
   imports: [
     BrowserModule,
@@ -24,6 +31,8 @@ import {MatButtonModule} from '@angular/material/button';
     AngularFireAuthModule,
     MatToolbarModule,
     MatButtonModule,
+    BrowserAnimationsModule,
+    MatDialogModule,
     MatIconModule,
     MatProgressBarModule,
     AgmCoreModule.forRoot({
