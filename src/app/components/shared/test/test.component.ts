@@ -1,5 +1,5 @@
-import {Component} from '@angular/core';
-import {MatDialogRef} from '@angular/material';
+import {Component, Inject} from '@angular/core';
+import {MAT_DIALOG_DATA, MatDialogRef} from '@angular/material';
 
 @Component({
   selector: 'app-test',
@@ -8,7 +8,16 @@ import {MatDialogRef} from '@angular/material';
 })
 export class TestComponent {
 
-  constructor(public dialogRef: MatDialogRef<TestComponent>) {}
+  public toto = [];
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any, public dialogRef: MatDialogRef<TestComponent>) {
+    console.log('constructor');
+    console.log(this.data);
+  }
+
+  public ngOnInit(): void {
+    alert(this.data.name);
+  }
 
   onNoClick(): void {
     this.dialogRef.close();

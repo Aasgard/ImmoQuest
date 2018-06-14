@@ -8,6 +8,15 @@ mat-progress-bar {
 
 mat-toolbar {
   height: 7vh;
+  .toolbar-logo-container {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-right: 15px;
+    .toolbar-logo {
+      height: 80%;
+    }
+  }
 }
 
 .fill-space-flex {
