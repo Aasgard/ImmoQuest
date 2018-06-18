@@ -8,6 +8,10 @@ mat-progress-bar {
 
 mat-toolbar {
   height: 7vh;
+  .iq-brand-text {
+    font-family: Matane;
+    font-size: 32px;
+  }
   .toolbar-logo-container {
     height: 100%;
     display: flex;
