@@ -63,7 +63,7 @@ export class AppComponent {
         // });
         const modalRef = this.modalService.open(ModalComponent, {size: 'lg', centered: true, windowClass: 'test'});
         modalRef.componentInstance.marker = {lat: event.coords.lat, lng: event.coords.lng};
-        this.snackBar.open('Bien immobilier ajouté avec succès', '', {duration: 300000});
+        this.snackBar.open('Bien immobilier ajouté avec succès', '', {duration: 3000});
     }
 
     /**

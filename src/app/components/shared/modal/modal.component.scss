@@ -8,6 +8,16 @@ mat-panel-description {
   margin-right: 15px;
 }
 
+.mat-expansion-panel.mat-expanded {
+  border-left: 3px solid #3F51B5;
+  box-sizing: border-box;
+  mat-expansion-panel-header {
+    mat-panel-description {
+      color: #3F51B5;
+    }
+  }
+}
+
 .modal-header {
   background-color: #3F51B5;
   color: white;
