@@ -1,0 +1,53 @@
+<div class="modal-header">
+    <h4 class="modal-title">Ajout d'un bien immobilier</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <mat-accordion [multi]="true">
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Bien immobilier</mat-panel-title>
+                <mat-panel-description>Renseignements généraux sur le bien immobilier</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6"><input class="form-control" type="text" placeholder="Default input"></div>
+                    <div class="col-lg-6"><input class="form-control" type="text" placeholder="Default input"></div>
+                </div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Localisation</mat-panel-title>
+                <mat-panel-description>Endroit où se trouve le bien <mat-icon>account_circle</mat-icon></mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="row">
+                <div class="col-lg-3"><input class="form-control" type="text" disabled="marker.coord.lat"
+                                             [value]="marker.lat"></div>
+                <div class="col-lg-3"><input class="form-control" type="text" disabled="marker.coord.lon"
+                                             [value]="marker.lng"></div>
+            </div>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Contact</mat-panel-title>
+                <mat-panel-description>Personne / agence de contact pour ce bien immobilier</mat-panel-description>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>Images & Photos</mat-panel-title>
+                <mat-panel-description>Prises de vue du bien (intérieur et/ou extérieur)</mat-panel-description>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+    </mat-accordion>
+</div>
+<div class="modal-footer">
+    <button mat-raised-button color="primary">Enregistrer</button>
+    <button mat-button (click)="activeModal.close('Close click')">Fermer</button>
+</div>

@@ -9,23 +9,29 @@ import {AngularFireModule} from 'angularfire2';
 import {AngularFireAuthModule} from 'angularfire2/auth';
 import {AngularFireDatabase} from 'angularfire2/database';
 import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatInputModule, MatProgressBarModule} from '@angular/material';
+import {MatInputModule, MatProgressBarModule, MatSnackBarModule} from '@angular/material';
 import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatDialogModule} from '@angular/material/dialog';
 import {TestComponent} from './components/shared/test/test.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { ModalComponent } from './components/shared/modal/modal.component';
+import {MatExpansionModule} from '@angular/material/expansion';
 
 
 @NgModule({
     declarations: [
         AppComponent,
-        TestComponent
+        TestComponent,
+        ModalComponent
     ],
     entryComponents: [
-        TestComponent
+        TestComponent,
+        ModalComponent
     ],
     imports: [
+        NgbModule.forRoot(),
         BrowserModule,
         AppRoutingModule,
         AngularFireModule.initializeApp(environment.firebase),
@@ -33,6 +39,8 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
         MatToolbarModule,
         MatButtonModule,
         BrowserAnimationsModule,
+        MatExpansionModule,
+        MatSnackBarModule,
         MatInputModule,
         MatDialogModule,
         MatIconModule,

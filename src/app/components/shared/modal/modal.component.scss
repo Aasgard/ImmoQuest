@@ -1,0 +1,17 @@
+mat-panel-title {
+  font-weight: bold;
+}
+
+mat-panel-description {
+  text-align: right;
+  display: block;
+  margin-right: 15px;
+}
+
+.modal-header {
+  background-color: #3F51B5;
+  color: white;
+  .close {
+    color: white;
+  }
+}
