@@ -1,5 +1,18 @@
+.upload-progress-bar {
+  height: 10px;
+  display: none;
+  &-active {
+    display: block;
+  }
+}
+
 mat-panel-title {
   font-weight: bold;
+  display: flex;
+  align-items: center;
+  img.create-marker-icon-title {
+    margin-right: 15px;
+  }
 }
 
 mat-panel-description {
@@ -8,15 +21,10 @@ mat-panel-description {
   margin-right: 15px;
 }
 
-.modal-header {
-  border-bottom: 0;
-}
-
-.upload-progress-bar {
-  height: 10px;
-  display: none;
-  &-active {
-    display: block;
+.create-marker-contact-type-choice {
+  width: 100%;
+  label {
+    width: 50%;
   }
 }
 
@@ -38,6 +46,7 @@ mat-panel-description {
 
 .modal-header {
   background-color: #3F51B5;
+  border-bottom: 0;
   color: white;
   .close {
     color: white;

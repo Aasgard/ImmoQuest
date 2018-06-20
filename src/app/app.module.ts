@@ -19,6 +19,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { ModalComponent } from './components/shared/modal/modal.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AngularFireStorageModule} from 'angularfire2/storage';
+import {FormsModule} from '@angular/forms';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import {AngularFireStorageModule} from 'angularfire2/storage';
         MatIconModule,
         MatProgressBarModule,
         AngularFireStorageModule,
+        FormsModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyDOSn5kyr3PBRT03oZ8L7rxHx8LsSd-oQk'
         })
