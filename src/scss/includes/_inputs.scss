@@ -1,0 +1,18 @@
+.btn-group-toggle {
+  label {
+    background: $primary;
+    border-color: $primary;
+  }
+  label:hover {
+    background-color: $primary-darker-1;
+    border-color: $primary-darker-1
+  }
+  label:active, label.active {
+    background-color: $primary-darker-1 !important;
+    border-color: $primary-darker-1 !important;
+    box-shadow: none !important;
+  }
+  label.active:focus {
+    box-shadow: none !important;
+  }
+}
