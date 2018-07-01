@@ -8,6 +8,8 @@ import {TestComponent} from './components/shared/test/test.component';
 import {UtilsService} from './providers/utils/utils.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from './components/shared/modal/modal.component';
+import {AngularFireAuth} from 'angularfire2/auth';
+import {auth} from 'firebase';
 
 
 @Component({
@@ -23,6 +25,7 @@ export class AppComponent {
     public zoom = 13;
     public lat = 48.118845;
     public lng = -1.651217;
+    public connectedUser: any = null;
 
     public markers: IMarker[] = [];
     public mapStylerOptions = [
@@ -36,7 +39,7 @@ export class AppComponent {
         }
     ];
 
-    constructor(private snackBar: MatSnackBar, private modalService: NgbModal, private db: AngularFireDatabase, private dialog: MatDialog, private utils: UtilsService) {
+    constructor(private snackBar: MatSnackBar, private modalService: NgbModal, private afAuth: AngularFireAuth, private db: AngularFireDatabase, private dialog: MatDialog, private utils: UtilsService) {
         db.list('markers').snapshotChanges().subscribe((data: any) => {
             this.markers = data.map(data => {
                 const record = Object.assign({}, data.payload.val());
@@ -46,6 +49,13 @@ export class AppComponent {
                 return record;
             });
         });
+    }
+
+    public ngOnInit(): void {
+      this.afAuth.user.subscribe((user) => {
+        console.log(JSON.stringify(user));
+        this.connectedUser = user;
+      });
     }
 
     /**
@@ -73,6 +83,12 @@ export class AppComponent {
         let dialogRef = this.dialog.open(TestComponent, {
             hasBackdrop: true, data: {name: 'austin'}
         });
+    }
+
+    public onLoginButtonClicked(): void {
+      if (!this.connectedUser) {
+        this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider());
+      }
     }
 
     /**

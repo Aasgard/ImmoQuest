@@ -2,32 +2,35 @@
     <span class="toolbar-logo-container">
         <img src="assets/iq_logo.png" alt="ImmoQuestLogo" class="toolbar-logo">
     </span>
-    <span class="iq-brand-text">ImmoQuest</span>
-    <span class="fill-space-flex"></span>
-    <button mat-icon-button [disabled]="true">
-        <mat-icon>add_circle</mat-icon>
-    </button>
-    <button mat-icon-button [disabled]="true">
-        <mat-icon>favorite</mat-icon>
-    </button>
-    <button mat-icon-button>
-        <mat-icon>person</mat-icon>
-    </button>
+  <span class="iq-brand-text">ImmoQuest</span>
+  <span class="fill-space-flex"></span>
+  <button mat-icon-button [disabled]="true">
+    <mat-icon>add_circle</mat-icon>
+  </button>
+  <button mat-icon-button [disabled]="true">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button (click)="onLoginButtonClicked()">
+    <mat-icon>person</mat-icon>
+  </button>
+  <button mat-icon-button>
+    <mat-icon>power_settings_new</mat-icon>
+  </button>
 </mat-toolbar>
 
 <!--<mat-progress-bar mode="indeterminate"></mat-progress-bar>-->
 
 <agm-map
-        [latitude]="lat"
-        [longitude]="lng"
-        [styles]="mapStylerOptions"
-        [zoom]="zoom"
-        [disableDefaultUI]="false"
-        [zoomControl]="false"
-        [fullscreenControl]="true"
-        (mapClick)="onMapClicked($event)"
-        (mapRightClick)="onMapRightClicked($event)">
-    <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [label]=""
-                (markerClick)="onMarkerClicked(marker.id)" [iconUrl]="marker.markerIcon"></agm-marker>
+  [latitude]="lat"
+  [longitude]="lng"
+  [styles]="mapStylerOptions"
+  [zoom]="zoom"
+  [disableDefaultUI]="false"
+  [zoomControl]="false"
+  [fullscreenControl]="true"
+  (mapClick)="onMapClicked($event)"
+  (mapRightClick)="onMapRightClicked($event)">
+  <agm-marker *ngFor="let marker of markers" [latitude]="marker.lat" [longitude]="marker.lng" [label]=""
+              (markerClick)="onMarkerClicked(marker.id)" [iconUrl]="marker.markerIcon"></agm-marker>
 </agm-map>
 <router-outlet></router-outlet>

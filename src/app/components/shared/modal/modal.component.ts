@@ -16,7 +16,9 @@ export class ModalComponent {
 
     public uploadPourcentage: number = 0;
     public isUploading: boolean = false;
-    public isAgenceSelected: boolean = false;
+    public isAgenceTypeSelected: boolean = false;
+    public isLocationTypeSelected: boolean = false;
+    public isHouseTypeSelected: boolean = false;
 
     constructor(private storage: AngularFireStorage, public activeModal: NgbActiveModal, private utils: UtilsService) {}
 
