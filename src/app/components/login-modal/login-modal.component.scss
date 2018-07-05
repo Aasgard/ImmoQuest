@@ -1,0 +1,17 @@
+.full-width-button {
+  width: 100%;
+}
+
+.google-connect-button {
+  margin-top: 15px;
+  &:before {
+    content: "";
+    background: url("../../../assets/google_connect.png") no-repeat center;
+    width: 15px;
+    height: 15px;
+    margin-right: 10px;
+    display: inline-block;
+    background-size: 15px;
+    vertical-align: middle;
+  }
+}

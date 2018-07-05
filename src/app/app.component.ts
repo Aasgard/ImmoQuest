@@ -10,6 +10,7 @@ import {ModalComponent} from './components/shared/modal/modal.component';
 import {AngularFireAuth} from 'angularfire2/auth';
 import {auth} from 'firebase';
 import {from} from 'rxjs';
+import {LoginModalComponent} from './components/login-modal/login-modal.component';
 
 
 @Component({
@@ -65,17 +66,18 @@ export class AppComponent {
      * @param event
      */
     public onMapClicked(event: any): void {
-        const modalRef = this.modalService.open(ModalComponent, {size: 'lg', centered: true, windowClass: 'test'});
+        const modalRef = this.modalService.open(ModalComponent, {size: 'lg', centered: true});
         modalRef.componentInstance.marker = {lat: event.coords.lat, lng: event.coords.lng};
     }
 
     public onLoginButtonClicked(): void {
         if (!this.connectedUser) {
-            from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())).subscribe((response: any) => {
-                if (response && response.user) {
-                    this.snackBar.open(response.user.displayName ? `Bonjour ${response.user.displayName}, bienvenue sur ImmoQuest !` : 'Bienvenue sur ImmoQuest !', '', {duration: 3000});
-                }
-            });
+            // from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())).subscribe((response: any) => {
+            //     if (response && response.user) {
+            //         this.snackBar.open(response.user.displayName ? `Bonjour ${response.user.displayName}, bienvenue sur ImmoQuest !` : 'Bienvenue sur ImmoQuest !', '', {duration: 3000});
+            //     }
+            // });
+            this.modalService.open(LoginModalComponent, {size: 'lg', centered: true});
         }
     }
 

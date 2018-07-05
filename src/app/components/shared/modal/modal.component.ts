@@ -3,7 +3,6 @@ import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {IMarker} from '../../../models/marker.model';
 import {AngularFireStorage} from 'angularfire2/storage';
 import {UtilsService} from '../../../providers/utils/utils.service';
-import {finalize} from 'rxjs/operators';
 
 @Component({
     selector: 'app-modal',

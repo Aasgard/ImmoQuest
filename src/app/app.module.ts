@@ -20,17 +20,21 @@ import { ModalComponent } from './components/shared/modal/modal.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {AngularFireStorageModule} from 'angularfire2/storage';
 import {FormsModule} from '@angular/forms';
+import {MatSlideToggleModule} from '@angular/material/slide-toggle';
+import { LoginModalComponent } from './components/login-modal/login-modal.component';
 
 
 @NgModule({
     declarations: [
         AppComponent,
         TestComponent,
-        ModalComponent
+        ModalComponent,
+        LoginModalComponent
     ],
     entryComponents: [
         TestComponent,
-        ModalComponent
+        ModalComponent,
+        LoginModalComponent
     ],
     imports: [
         NgbModule.forRoot(),
@@ -41,6 +45,7 @@ import {FormsModule} from '@angular/forms';
         MatToolbarModule,
         MatButtonModule,
         BrowserAnimationsModule,
+        MatSlideToggleModule,
         MatExpansionModule,
         MatSnackBarModule,
         MatInputModule,
