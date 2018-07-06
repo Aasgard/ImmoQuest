@@ -8,8 +8,6 @@ import {UtilsService} from './providers/utils/utils.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ModalComponent} from './components/shared/modal/modal.component';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {auth} from 'firebase';
-import {from} from 'rxjs';
 import {LoginModalComponent} from './components/login-modal/login-modal.component';
 
 
@@ -72,12 +70,7 @@ export class AppComponent {
 
     public onLoginButtonClicked(): void {
         if (!this.connectedUser) {
-            // from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())).subscribe((response: any) => {
-            //     if (response && response.user) {
-            //         this.snackBar.open(response.user.displayName ? `Bonjour ${response.user.displayName}, bienvenue sur ImmoQuest !` : 'Bienvenue sur ImmoQuest !', '', {duration: 3000});
-            //     }
-            // });
-            this.modalService.open(LoginModalComponent, {size: 'lg', centered: true});
+            this.modalService.open(LoginModalComponent, {centered: true});
         }
     }
 
