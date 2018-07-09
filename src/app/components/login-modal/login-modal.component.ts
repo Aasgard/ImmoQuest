@@ -32,10 +32,38 @@ export class LoginModalComponent {
     }
 
     public onLoginFormSubmit(): void {
-        console.log(this.loginForm);
-        console.log(this.emailAddressLogin);
-        console.log(this.passwordLogin);
-
-        this.afAuth.auth.createUserWithEmailAndPassword(this.emailAddressLogin, this.passwordLogin);
+        if (this.loginForm.valid) {
+            // this.afAuth.auth.createUserWithEmailAndPassword(this.emailAddressLogin, this.passwordLogin);
+            this.afAuth.auth.signInWithEmailAndPassword(this.emailAddressLogin, this.passwordLogin).then((wsResult: any) => {
+                alert(JSON.stringify(wsResult));
+            }).catch((response: any) => {
+                let message = '';
+                switch (response.code) {
+                    case 'auth/invalid-email': {
+                        message = 'Erreur : adresse email est mal formée';
+                        break;
+                    }
+                    case 'auth/user-disabled': {
+                        message = 'Erreur : utilisateur désactivé';
+                        break;
+                    }
+                    case 'auth/user-not-found': {
+                        message = 'Erreur : utilisateur non retrouvé';
+                        break;
+                    }
+                    case 'auth/wrong-password': {
+                        message = 'Erreur : mot de passe utilisé incorrect';
+                        break;
+                    }
+                    default: {
+                        message = 'Erreur : merci de contacter l\'administrateur';
+                        break;
+                    }
+                }
+                this.snackBar.open(message, '', {duration: 5000});
+            });
+        } else {
+            this.snackBar.open('Merci de remplir tous les champs', '', {duration: 5000});
+        }
     }
 }

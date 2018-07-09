@@ -13,6 +13,7 @@
                     <label for="login_email">Adresse email</label>
                     <input type="email" class="form-control" id="login_email" placeholder="Adresse email"
                            name="login_email"
+                           [required]="true"
                            [(ngModel)]="emailAddressLogin" email>
                 </div>
             </div>
@@ -23,6 +24,7 @@
                     <label for="login_password">Mot de passe</label>
                     <input type="password" class="form-control" id="login_password" placeholder="Mot de passe"
                            name="login_password"
+                           [required]="true"
                            [(ngModel)]="passwordLogin">
                 </div>
             </div>
@@ -33,7 +35,7 @@
                 <button mat-raised-button color="primary" class="full-width-button" type="submit">Connexion</button>
             </div>
             <div class="col-lg-5">
-                <button mat-raised-button color="primary" class="full-width-button">S'inscrire</button>
+                <button mat-raised-button color="primary" class="full-width-button" type="button">S'inscrire</button>
             </div>
         </div>
 
