@@ -12,6 +12,9 @@ import {MatSnackBar} from '@angular/material';
 })
 export class LoginModalComponent {
 
+    public emailAddressLogin = null;
+    public passwordLogin = null;
+
     constructor(public activeModal: NgbActiveModal, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
 
     }
@@ -19,8 +22,14 @@ export class LoginModalComponent {
     public onLoginWithGoogleButtonClicked(): void {
         from(this.afAuth.auth.signInWithPopup(new auth.GoogleAuthProvider())).subscribe((response: any) => {
             if (response && response.user) {
+                this.activeModal.dismiss();
                 this.snackBar.open(response.user.displayName ? `Bonjour ${response.user.displayName}, bienvenue sur ImmoQuest !` : 'Bienvenue sur ImmoQuest !', '', {duration: 3000});
             }
         });
+    }
+
+    public onClassicConnectionButtonClicked(): void {
+        console.log(this.emailAddressLogin);
+        console.log(this.passwordLogin);
     }
 }
