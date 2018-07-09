@@ -1,9 +1,10 @@
-import {Component} from '@angular/core';
-import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import {from} from 'rxjs';
+import {Component, ViewChild} from '@angular/core';
 import {AngularFireAuth} from 'angularfire2/auth';
-import {auth} from 'firebase';
+import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 import {MatSnackBar} from '@angular/material';
+import {NgForm} from '@angular/forms';
+import {auth} from 'firebase';
+import {from} from 'rxjs';
 
 @Component({
     selector: 'app-login-modal',
@@ -12,8 +13,10 @@ import {MatSnackBar} from '@angular/material';
 })
 export class LoginModalComponent {
 
-    public emailAddressLogin = null;
-    public passwordLogin = null;
+    @ViewChild('loginForm') public loginForm: NgForm;
+
+    public emailAddressLogin = '';
+    public passwordLogin = '';
 
     constructor(public activeModal: NgbActiveModal, private afAuth: AngularFireAuth, private snackBar: MatSnackBar) {
 
@@ -28,8 +31,11 @@ export class LoginModalComponent {
         });
     }
 
-    public onClassicConnectionButtonClicked(): void {
+    public onLoginFormSubmit(): void {
+        console.log(this.loginForm);
         console.log(this.emailAddressLogin);
         console.log(this.passwordLogin);
+
+        this.afAuth.auth.createUserWithEmailAndPassword(this.emailAddressLogin, this.passwordLogin);
     }
 }
